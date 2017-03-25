@@ -1,0 +1,10 @@
+{
+  "name": “getLocations”,
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "latest",
+    "mysql": "latest”,
+    “json”: “latest”,
+  }
+}

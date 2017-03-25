@@ -1,0 +1,11 @@
+{
+  "name": "myTownHall”,
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "latest",
+    "mysql": "latest”,
+    "alexa-sdk": "^1.0.0"
+  },
+  "main": "index.js"
+}

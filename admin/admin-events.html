@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>My Town Hall - Events Admin - Troop 58</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<script src="https://sites.google.com/site/troop58oceanport/documents/editablegrid.js"></script>
+		<!-- [DO NOT DEPLOY] --> <script src="https://sites.google.com/site/troop58oceanport/documents/editablegrid_renderers.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="https://sites.google.com/site/troop58oceanport/documents/editablegrid_editors.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="https://sites.google.com/site/troop58oceanport/documents/editablegrid_validators.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="https://sites.google.com/site/troop58oceanport/documents/editablegrid_utils.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="https://sites.google.com/site/troop58oceanport/documents/editablegrid_charts.js" ></script>
+		<link rel="stylesheet" href="https://sites.google.com/site/troop58oceanport/documents/editablegrid.css" type="text/css" media="screen">
+		
+		<style>
+			body { font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:11px; }
+			h1 { font-size: 15px; }
+			a { color: #548dc4; text-decoration: none; }
+			a:hover { text-decoration: underline; }
+			table.testgrid { border-collapse: collapse; border: 1px solid #CCB; width: 800px; }
+			table.testgrid td, table.testgrid th { padding: 5px; border: 1px solid #E0E0E0; }
+			table.testgrid th { background: #E5E5E5; text-align: left; }
+			input.invalid { background: red; color: #FDFDFD; }
+		</style>
+		
+		<script>
+			var updateList = [];
+			var listCount = 0;
+
+			function saveData(){
+				listCount = updateList.length;
+				if (listCount > 0){
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'https://wreafgc82i.execute-api.us-east-1.amazonaws.com/Test/events');
+					xhr.setRequestHeader('Content-type', 'application/json');
+					//xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xhr.onload = function () {
+					    // do something to response
+					    console.log(this.responseText);
+					    if (listCount == updateList.length){
+					    	console.log('resetting updateList');
+						    updateList = [];				    	
+					    }
+					};
+					
+					//alert('"{\\"events\\":' + JSON.stringify(updateList).replace(/"/gi, '\\"') + '}"');
+					
+					xhr.send('"{\\"events\\":' + JSON.stringify(updateList).replace(/"/gi, '\\"') + '}"');
+				}
+				else
+				{
+					alert('Nothing to save.');
+				}
+			}
+			
+			function getValue(sValue){
+				return ((sValue != null) && (sValue != undefined))?sValue:'';
+			}
+			
+			function reqListener () {
+				if (this.responseText){
+					var events = JSON.parse(this.responseText); //.replace(/\\\"/g, "\"");
+					let jsonData = "{'metadata':[{'name':'name','label':'Name','datatype':'string','editable':false},{'name':'start_date','label':'Start Date','datatype':'string','editable':true},{'name':'end_date','label':'End Date','datatype':'string','editable':true},{'name':'times','label':'Times','datatype':'string','editable':true},{'name':'frequency','label':'Frequency','datatype':'string','editable':true},{'name':'location','label':'Location','datatype':'string','editable':true},{'name':'details','label':'Details','datatype':'string','editable':true},{'name':'contact_name','label':'Contact Name','datatype':'string','editable':true},{'name':'contact_phone','label':'Contact Phone','datatype':'string','editable':true},{'name':'contact_email','label':'Contact Email','datatype':'string','editable':true}],'data':[";
+					//alert(jsonData);
+					
+					for (var i in events){
+						let event = events[i];
+						console.log('event:' + JSON.stringify(event));
+						if (i > 0){
+							jsonData += ',';
+						}
+						jsonData += "{'id':" + getValue(event.event_id);
+						jsonData += ", 'values':{";
+						jsonData += "'name':'" + getValue(event.name) + "',";
+						jsonData += "'start_date':'" + getValue(event.start_date) + "',";
+						jsonData += "'end_date':'" + getValue(event.end_date) + "',";
+						jsonData += "'times':'" + getValue(event.times) + "',";
+						jsonData += "'frequency':'" + getValue(event.frequency) + "',";
+						jsonData += "'location':'" + getValue(event.location) + "',";
+						jsonData += "'details':'" + getValue(event.details) + "',";
+						jsonData += "'contact_name':'" + getValue(event.contact_name) + "',";
+						jsonData += "'contact_phone':'" + getValue(event.contact_phone) + "',";
+						jsonData += "'contact_email':'" + getValue(event.contact_email) + "'";
+						jsonData += "}}";
+					}
+					jsonData += "]}";
+					//jsonData = jsonData.substr(1,(jsonData.length - 2));
+					console.log('jsonData:' + jsonData);
+					editableGrid = new EditableGrid("Events"); 
+					editableGrid.modelChanged = function(rowIndex, columnIndex, oldValue, newValue, row) {
+						if (row){
+						 	let id = row.id.substring(row.id.lastIndexOf("_")+1);
+						 	let values = editableGrid.getRowValues(rowIndex);
+							let oJSON = {"event_id":id, "start_date": values.start_date, "end_date": values.end_date, "times": values.times, "frequency": values.frequency, "details": values.details, "contact_name": values.contact_name, "contact_phone": values.contact_phone, "contact_email": values.contact_email, "location": values.location};
+							updateList.push(oJSON);
+						}
+						saveData();
+					 };
+					editableGrid.loadJSONFromString(jsonData);
+					editableGrid.renderGrid("tablecontent", "testgrid");
+				}	
+			}
+			window.onload = function() {
+				
+				var oReq = new XMLHttpRequest();
+				oReq.addEventListener("load", reqListener);
+				oReq.open("GET", "https://wreafgc82i.execute-api.us-east-1.amazonaws.com/Test/events");
+				oReq.send();				
+			} 
+		</script> 
+				
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper" align="center">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1>My Town Hall - Events Admin</h1>
+						<p>If table does not display, refresh the page.  Click into a field to edit the corresponding value, changes automatically saved when leaving a field.  Note that the 'Name' field is not editable.</p>
+					</header>
+
+
+				<!-- Main -->
+					<div id="tablecontent"></div>
+					
+					<footer>
+						<h3>Grid structure provided by <a target="_blank" href="http://www.editablegrid.net/">Editablegrid</a></h3>
+					</footer>
+
+			</div>
+
+	</body>
+</html>

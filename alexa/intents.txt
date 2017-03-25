@@ -1,0 +1,4 @@
+My Town Hall - Coding For Community
+By: Troop 58 - Oceanport
+
+Code represents a solution supporting an Amazon Alexa Skill which answers common questions community residents have about their town.  
