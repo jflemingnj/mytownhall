@@ -1,0 +1,62 @@
+The following questions are currently supported, with the value of {location} replaced with a value from list_of_locations.txt and the value of {event} replaced with a value from list_of_events.txt
+
+what's the address for {location}
+what's the address of {location}
+what is the address for {location}
+what is the address of {location}
+where is {location}
+what are the hours for {location}
+what are the hours of {location}
+when is {location} open
+what's the phone number for {location}
+what is the phone number for {location}
+what's the number for {location}
+what is the number for {location}
+what's the phone number of {location}
+what is the phone number of {location}
+what's the number of {location}
+what is the number of {location}
+what is {event}
+what is {event} event
+what is the {event}
+what is the {event} event
+what day is {event}
+what day is {event} event
+what day is the {event}
+what day is the {event} event
+what are the dates for {event}
+what are the dates for {event} event
+what are the dates for the {event}
+what are the dates for the {event} event
+when is {event}
+when is {event} event
+when is the {event}
+when is the {event} event
+when is {event} running
+when is {event} event running
+when is the {event} running
+when is the {event} event running
+what time is {event}
+what time is {event} event
+what time is the {event}
+what time is the {event} event
+when is {event}
+when is {event} event
+when is the {event}
+when is the {event} event
+who can i talk to about {event}
+who can i talk to about {event} event
+who can i talk to about the {event}
+who can i talk to about the {event} event
+who can i call about {event}
+who can i call about {event} event
+who can i call about the {event}
+who can i call about the {event} event
+who can i email about {event}
+who can i email about {event} event
+who can i email about the {event}
+who can i email about the {event} event
+where is {event}
+where is {event} event
+where is the {event}
+where is the {event} event

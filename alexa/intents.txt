@@ -1,4 +1,100 @@
-My Town Hall - Coding For Community
-By: Troop 58 - Oceanport
-
-Code represents a solution supporting an Amazon Alexa Skill which answers common questions community residents have about their town.  
+{
+  "intents": [
+    {
+      "intent": "LocationAddressIntent",
+      "slots": [
+        {
+          "name": "location",
+          "type": "LIST_OF_LOCATIONS"
+        }
+      ]
+    },
+    {
+      "intent": "LocationHoursIntent",
+      "slots": [
+        {
+          "name": "location",
+          "type": "LIST_OF_LOCATIONS"
+        }
+      ]
+    },
+    {
+      "intent": "LocationPhoneIntent",
+      "slots": [
+        {
+          "name": "location",
+          "type": "LIST_OF_LOCATIONS"
+        }
+      ]
+    },
+    {
+      "intent": "EventDetailsIntent",
+      "slots": [
+        {
+          "name": "event",
+          "type": "LIST_OF_EVENTS"
+        }
+      ]
+    },
+    {
+      "intent": "EventDateIntent",
+      "slots": [
+        {
+          "name": "event",
+          "type": "LIST_OF_EVENTS"
+        }
+      ]
+    },
+    {
+      "intent": "EventTimeIntent",
+      "slots": [
+        {
+          "name": "event",
+          "type": "LIST_OF_EVENTS"
+        }
+      ]
+    },
+    {
+      "intent": "EventScheduleIntent",
+      "slots": [
+        {
+          "name": "event",
+          "type": "LIST_OF_EVENTS"
+        }
+      ]
+    },
+    {
+      "intent": "EventContactIntent",
+      "slots": [
+        {
+          "name": "event",
+          "type": "LIST_OF_EVENTS"
+        }
+      ]
+    },
+    {
+      "intent": "EventLocationIntent",
+      "slots": [
+        {
+          "name": "event",
+          "type": "LIST_OF_EVENTS"
+        }
+      ]
+    },
+    {
+      "intent": "QuestionIntent"
+    },
+    {
+      "intent": "AMAZON.RepeatIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

@@ -1,4 +1,62 @@
-My Town Hall - Coding For Community
-By: Troop 58 - Oceanport
-
-Code represents a solution supporting an Amazon Alexa Skill which answers common questions community residents have about their town.  
+LocationAddressIntent what's the address for {location}
+LocationAddressIntent what's the address of {location}
+LocationAddressIntent what is the address for {location}
+LocationAddressIntent what is the address of {location}
+LocationAddressIntent where is {location}
+LocationHoursIntent what are the hours for {location}
+LocationHoursIntent what are the hours of {location}
+LocationHoursIntent when is {location} open
+LocationPhoneIntent what's the phone number for {location}
+LocationPhoneIntent what is the phone number for {location}
+LocationPhoneIntent what's the number for {location}
+LocationPhoneIntent what is the number for {location}
+LocationPhoneIntent what's the phone number of {location}
+LocationPhoneIntent what is the phone number of {location}
+LocationPhoneIntent what's the number of {location}
+LocationPhoneIntent what is the number of {location}
+EventDetailsIntent what is {event}
+EventDetailsIntent what is {event} event
+EventDetailsIntent what is the {event}
+EventDetailsIntent what is the {event} event
+EventDateIntent what day is {event}
+EventDateIntent what day is {event} event
+EventDateIntent what day is the {event}
+EventDateIntent what day is the {event} event
+EventDateIntent what are the dates for {event}
+EventDateIntent what are the dates for {event} event
+EventDateIntent what are the dates for the {event}
+EventDateIntent what are the dates for the {event} event
+EventDateIntent when is {event}
+EventDateIntent when is {event} event
+EventDateIntent when is the {event}
+EventDateIntent when is the {event} event
+EventDateIntent when is {event} running
+EventDateIntent when is {event} event running
+EventDateIntent when is the {event} running
+EventDateIntent when is the {event} event running
+EventTimeIntent what time is {event}
+EventTimeIntent what time is {event} event
+EventTimeIntent what time is the {event}
+EventTimeIntent what time is the {event} event
+EventScheduleIntent when is {event}
+EventScheduleIntent when is {event} event
+EventScheduleIntent when is the {event}
+EventScheduleIntent when is the {event} event
+EventContactIntent who can i talk to about {event}
+EventContactIntent who can i talk to about {event} event
+EventContactIntent who can i talk to about the {event}
+EventContactIntent who can i talk to about the {event} event
+EventContactIntent who can i call about {event}
+EventContactIntent who can i call about {event} event
+EventContactIntent who can i call about the {event}
+EventContactIntent who can i call about the {event} event
+EventContactIntent who can i email about {event}
+EventContactIntent who can i email about {event} event
+EventContactIntent who can i email about the {event}
+EventContactIntent who can i email about the {event} event
+EventLocationIntent where is {event}
+EventLocationIntent where is {event} event
+EventLocationIntent where is the {event}
+EventLocationIntent where is the {event} event
+QuestionIntent does my dog need a license
+QuestionIntent how do i get to the mayor's office
