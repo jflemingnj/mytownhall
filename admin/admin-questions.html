@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>My Town Hall - Events Admin - Troop 58</title>
+		<title>My Town Hall - Question and Answer Admin - Troop 58</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -32,7 +32,7 @@
 				listCount = updateList.length;
 				if (listCount > 0){
 					var xhr = new XMLHttpRequest();
-					xhr.open('POST', 'https://wreafgc82i.execute-api.us-east-1.amazonaws.com/Test/events');
+					xhr.open('POST', 'https://wreafgc82i.execute-api.us-east-1.amazonaws.com/Test/questions');
 					xhr.setRequestHeader('Content-type', 'application/json');
 					//xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 					xhr.onload = function () {
@@ -61,28 +61,20 @@
 			function reqListener () {
 				if (this.responseText){
 					var events = JSON.parse(this.responseText); //.replace(/\\\"/g, "\"");
-					let jsonData = "{'metadata':[{'name':'name','label':'Name','datatype':'string','editable':false},{'name':'common_name','label':'Common Name','datatype':'string','editable':true},{'name':'start_date','label':'Start Date','datatype':'string','editable':true},{'name':'end_date','label':'End Date','datatype':'string','editable':true},{'name':'times','label':'Times','datatype':'string','editable':true},{'name':'frequency','label':'Frequency','datatype':'string','editable':true},{'name':'location','label':'Location','datatype':'string','editable':true},{'name':'details','label':'Details','datatype':'string','editable':true},{'name':'contact_name','label':'Contact Name','datatype':'string','editable':true},{'name':'contact_phone','label':'Contact Phone','datatype':'string','editable':true},{'name':'contact_email','label':'Contact Email','datatype':'string','editable':true}],'data':[";
+					let jsonData = "{'metadata':[{'name':'question','label':'Question','datatype':'string','editable':false},{'name':'common_question','label':'Common Question','datatype':'string','editable':true},{'name':'answer','label':'Answer','datatype':'string','editable':true}],'data':[";
 					//alert(jsonData);
 					
 					for (var i in events){
-						let event = events[i];
+						let question = events[i];
 						console.log('event:' + JSON.stringify(event));
 						if (i > 0){
 							jsonData += ',';
 						}
-						jsonData += "{'id':" + getValue(event.event_id);
+						jsonData += "{'id':" + getValue(question.q_and_a_id);
 						jsonData += ", 'values':{";
-						jsonData += "'common_name':'" + getValue(event.common_name) + "',";
-						jsonData += "'name':'" + getValue(event.name) + "',";
-						jsonData += "'start_date':'" + getValue(event.start_date) + "',";
-						jsonData += "'end_date':'" + getValue(event.end_date) + "',";
-						jsonData += "'times':'" + getValue(event.times) + "',";
-						jsonData += "'frequency':'" + getValue(event.frequency) + "',";
-						jsonData += "'location':'" + getValue(event.location) + "',";
-						jsonData += "'details':'" + getValue(event.details) + "',";
-						jsonData += "'contact_name':'" + getValue(event.contact_name) + "',";
-						jsonData += "'contact_phone':'" + getValue(event.contact_phone) + "',";
-						jsonData += "'contact_email':'" + getValue(event.contact_email) + "'";
+						jsonData += "'question':'" + getValue(question.question) + "',";
+						jsonData += "'common_question':'" + getValue(question.common_question) + "',";
+						jsonData += "'answer':'" + getValue(question.answer) + "'";
 						jsonData += "}}";
 					}
 					jsonData += "]}";
@@ -93,7 +85,7 @@
 						if (row){
 						 	let id = row.id.substring(row.id.lastIndexOf("_")+1);
 						 	let values = editableGrid.getRowValues(rowIndex);
-							let oJSON = {"event_id":id, "common_name": values.common_name, "start_date": values.start_date, "end_date": values.end_date, "times": values.times, "frequency": values.frequency, "details": values.details, "contact_name": values.contact_name, "contact_phone": values.contact_phone, "contact_email": values.contact_email, "location": values.location};
+							let oJSON = {"q_and_a_id":id, "common_question": values.common_question, "answer": values.answer};
 							updateList.push(oJSON);
 						}
 						saveData();
@@ -106,7 +98,7 @@
 				
 				var oReq = new XMLHttpRequest();
 				oReq.addEventListener("load", reqListener);
-				oReq.open("GET", "https://wreafgc82i.execute-api.us-east-1.amazonaws.com/Test/events");
+				oReq.open("GET", "https://wreafgc82i.execute-api.us-east-1.amazonaws.com/Test/questions");
 				oReq.send();				
 			} 
 		</script> 
@@ -119,7 +111,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1>My Town Hall - Events Admin</h1>
+						<h1>My Town Hall - Question and Answer Admin</h1>
 						<p>If table does not display, refresh the page.  Click into a field to edit the corresponding value, changes automatically saved when leaving a field.  Note that the 'Name' field is not editable.</p>
 					</header>
 

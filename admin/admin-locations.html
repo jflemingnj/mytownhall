@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>My Town Hall - Events Admin - Troop 58</title>
+		<title>My Town Hall - Locations Admin - Troop 58</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -58,7 +58,7 @@
 			function reqListener () {
 				if (this.responseText){
 					var locations = JSON.parse(this.responseText); //.replace(/\\\"/g, "\"");
-					let jsonData = "{'metadata':[{'name':'name','label':'Name','datatype':'string','editable':false},{'name':'address','label':'Address','datatype':'string','editable':true},{'name':'phone','label':'Phone','datatype':'string','editable':true},{'name':'hours','label':'Hours','datatype':'string','editable':true}],'data':[";
+					let jsonData = "{'metadata':[{'name':'name','label':'Name','datatype':'string','editable':false},{'name':'common_name','label':'Common Name','datatype':'string','editable':true},{'name':'address','label':'Address','datatype':'string','editable':true},{'name':'phone','label':'Phone','datatype':'string','editable':true},{'name':'hours','label':'Hours','datatype':'string','editable':true}],'data':[";
 					
 					for (var i in locations){
 						let location = locations[i];
@@ -69,6 +69,7 @@
 						jsonData += "{'id':" + location.location_id;
 						jsonData += ", 'values':{";
 						jsonData += "'name':'" + location.name + "',";
+						jsonData += "'common_name':'" + location.common_name + "',";						
 						jsonData += "'address':'" + location.address + "',";
 						jsonData += "'phone':'" + location.phone + "',";
 						jsonData += "'hours':'" + location.hours + "'";
@@ -83,7 +84,7 @@
 						 	let id = row.id.substring(row.id.lastIndexOf("_")+1);
 						 	let values = editableGrid.getRowValues(rowIndex);
 							//let oJSON = {'location_id':id, 'address': values.address, 'phone': values.phone, 'hours': values.hours};
-							let oJSON = {"location_id":id, "address": values.address, "phone": values.phone, "hours": values.hours};
+							let oJSON = {"location_id":id, "common_name": values.common_name, "address": values.address, "phone": values.phone, "hours": values.hours};
 							updateList.push(oJSON);
 						}
 						saveData();
@@ -110,7 +111,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1>My Town Hall - Events Admin</h1>
+						<h1>My Town Hall - Locations Admin</h1>
 						<p>If table does not display, refresh the page.  Click into a field to edit the corresponding value, changes automatically saved when leaving a field.  Note that the 'Name' field is not editable.</p>
 					</header>
 
